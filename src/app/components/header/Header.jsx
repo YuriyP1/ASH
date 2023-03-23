@@ -2,8 +2,8 @@ import './style.scss'
 
 const Header = () =>{
     return(
-        <div className="header limitWidth">
-            <div className="header-content limitWidthSecond">
+        <div className="header limitWidthHeader">
+            <div className="header-content">
                 <div className="header-content-logo">
                     ASH
                 </div>

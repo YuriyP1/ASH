@@ -17,8 +17,8 @@ body{
     .app-container{
         position: relative;
         border-radius: 75px;
+        padding: 30px;
         width: 90vw;
-        height: 1000px;
         position: relative;
         overflow: hidden;
         padding-top: 150px;
@@ -31,7 +31,9 @@ body{
 .limitWidthSecond {
     max-width: 1325px;
     margin: 0 auto;
-    border-radius: 40px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+    // border-radius: 40px;
     // padding-bottom: 100px;
     // background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   
@@ -44,6 +46,14 @@ body{
 .limitWidth {
     margin: 0 auto;
     max-width: 1200px;
+  
+    @media (min-width: 360px) and (max-width: 1440px) {
+      max-width: calc(350px + (1200 - 350) * ((100vw - 360px) / (1440 - 360)));
+    }
+  }
+.limitWidthHeader {
+    margin: 0 auto;
+    max-width: 1325px;
   
     @media (min-width: 360px) and (max-width: 1440px) {
       max-width: calc(350px + (1200 - 350) * ((100vw - 360px) / (1440 - 360)));

@@ -1,14 +1,16 @@
 .banner{
-    width: 100%;
     padding: 100px;
     display: flex;
 
     &-content{
-        // display: flex;
+        width: 50%;
         color: #FFFFFF;
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         font-size: 70px;
+        // @media (min-width: 1180px) and (max-width: 1440px) {
+        //     font-size: calc(30px + (70 - 40) * ( (100vw - 1180px) / ( 1920 - 1180) ));
+        // }
 
         &__btn{
             border: 1px solid #FFFFFF;
@@ -25,6 +27,19 @@
 
     }
     &-visual{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__image{
+            width: 100%;
+            object-fit: cover;
+        }
 
     }
+}
+
+#canvas__root{
+    // width: 100%;
 }

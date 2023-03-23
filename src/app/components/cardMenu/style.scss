@@ -1,0 +1,72 @@
+.cardMenu{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 27px;
+    width: 32%;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    @media (max-width: 1180px) {
+        width: 100%;
+    }
+
+    .cardMenu-content{
+        padding: 30px;
+    }
+
+    &-imageWrap{
+        height: 250px;
+        width: 100%;
+        overflow: hidden;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &-titleAndDescription{
+        border-left: 5px #C23231 solid;
+        color: #000000;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        &-title{
+            font-size: 23px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        &-description{
+            font-size: 14px;
+        }
+    }
+    &-props-container{
+        border-left: 5px #C23231 solid;
+        color: #FFFFFF;
+        font-size: 14px;
+        display: flex;
+        padding-left: 20px;
+
+        margin-bottom: 37px;
+        &__weight{
+            margin-right: 30px;
+        }
+        // &__amount{
+        //     font-size: ;
+        // }
+
+    }
+
+    &-btn{
+        background: #C23231;
+        color: #FFFFFF;
+        padding: 15px 25px 15px 25px;
+        border-radius: 10px;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
