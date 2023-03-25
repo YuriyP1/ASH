@@ -59,3 +59,9 @@ body{
       max-width: calc(350px + (1200 - 350) * ((100vw - 360px) / (1440 - 360)));
     }
   }
+
+  .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
