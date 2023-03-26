@@ -13,6 +13,9 @@ body{
     align-items: center;
     padding: 30px;
     font-family: 'Montserrat';
+    @media (max-width: 1180px) {
+      padding: 0;
+    }
 
     .app-container{
         position: relative;
@@ -22,6 +25,12 @@ body{
         position: relative;
         overflow: hidden;
         padding-top: 150px;
+
+        @media (max-width: 1180px) {
+          width: 100vw;
+          border-radius: 0px;
+          padding: 150px 0 0 0;
+        }
     } 
 }
 

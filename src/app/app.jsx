@@ -16,7 +16,7 @@ export default function App () {
         <div className="app-container">
            <Header asideBar={createBar}/>
             { isAsideBar === true && <AsideBar createBar={setAsideBar}/>}
-           <Banner />
+           {/* <Banner /> */}
            <Menu   />
            <Background />
         </div>

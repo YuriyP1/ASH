@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import './style.scss'
 
-const CardMenu = ({ image, title, price, description, weight, amount, id }) =>{
+const CardMenu = ({ image, title, price, description, weight, amount, id, setFullCard }) =>{
 
     const position = {
         title,
@@ -25,7 +25,9 @@ const CardMenu = ({ image, title, price, description, weight, amount, id }) =>{
             </div>
             <div className="cardMenu-content">
                 <div className="cardMenu-titleAndDescription">
-                    <div className="cardMenu-titleAndDescription-title">
+                    <div className="cardMenu-titleAndDescription-title"
+                        onClick={()=>{setFullCard(id)}}
+                    >
                         {title}
                     </div> 
                     <div className="cardMenu-titleAndDescription-description">
@@ -40,8 +42,13 @@ const CardMenu = ({ image, title, price, description, weight, amount, id }) =>{
                         {amount} <span>шт</span>
                     </div>
                 </div>
-                <div className="cardMenu-btn" onClick={()=>{addPosition(position)}}>
-                    У КОШИК
+                <div className='cardMenu-btnAndPrice'>
+                    <div className="cardMenu-btn" onClick={()=>{addPosition(position)}}>
+                        У КОШИК
+                    </div>
+                    <div className="cardMenu-price center">
+                        {price} <span>&nbsp;грн</span>
+                    </div>
                 </div>
             </div>
         </div>

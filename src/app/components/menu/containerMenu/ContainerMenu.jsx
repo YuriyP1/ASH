@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import menu from '../../../../assets/menu/menu.json'
 import CardMenu from '../../cardMenu/CardMenu'
+import FullCard from '../headerMenu/HeaderMenu'
 import './style.scss'
 
-const ContainerMenu = ({ section, filter }) => {
+const ContainerMenu = ({ section, filter, setFullCard }) => {
 
     // const storeSection = useSelector(state => state.section.section)
 
@@ -21,6 +22,7 @@ const ContainerMenu = ({ section, filter }) => {
                             weight={item.weight}
                             amount={item.amount}
                             id={item.id}
+                            setFullCard={setFullCard}
                         />
                     }
                 })

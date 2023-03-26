@@ -58,15 +58,31 @@
 
     }
 
+    &-btnAndPrice{
+        display: flex;
+        justify-content: space-between;
+    }
     &-btn{
         background: #C23231;
         color: #FFFFFF;
         padding: 15px 25px 15px 25px;
+        width: 60%;
         border-radius: 10px;
         width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+        @media (min-width: 1180px) {
+            &:hover{
+                transition: 0.3s;
+                scale: 1.02;
+                cursor: pointer;
+            }   
+        }
 
+    }
+
+    &-price{
+        width: 40%;
     }
 }

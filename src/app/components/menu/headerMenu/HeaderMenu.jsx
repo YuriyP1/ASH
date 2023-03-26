@@ -7,9 +7,11 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 import './style.scss'
 import { useDispatch, useSelector } from 'react-redux';
+import useWindowSize from '../../../hook/resizeWindow';
 
-const HeaderMenu = () => {
+const HeaderMenu = ({disposeFullCard}) => {
 
+    const window = useWindowSize()
     const input = useRef()
 
     const items = [
@@ -34,6 +36,7 @@ const HeaderMenu = () => {
     const dispatch = useDispatch()
 
     const setSection = (section) => {
+        disposeFullCard(null)
         switch (section){
             case 'ПІЦА': dispatch({ type: 'SET_SECTION', section: 'pizza' })
                 break
@@ -47,7 +50,9 @@ const HeaderMenu = () => {
 
     return (
         <div className="headerMenu">
-            <div className="headerMenu-search center">
+            {
+                window.width > 1180 
+                ? <div className="headerMenu-search center">
                 <input
                     className="ecosystem-filter-change__input"
                     ref={input}
@@ -56,11 +61,16 @@ const HeaderMenu = () => {
                     placeholder="Search"
                     type='text'
                 />
-            </div>
+                </div>
+                :
+                null
+            }
+
             <div className="headerMenu-items">
                 <Swiper
                     spaceBetween={30}
-                    slidesPerView={4}
+                    centeredSlides={ window.width > 1180 ? 'center' : 'default'}
+                    slidesPerView={ window.width > 1180 ? 4 : 2}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
