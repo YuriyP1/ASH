@@ -7,6 +7,7 @@ import './style.scss'
 const Menu = () => {
 
     const storeSection = useSelector(state => state.section.section)
+    // const store = useSelector(state => console.log(state.store))
 
     return (
         <div className="menu limitWidthSecond">

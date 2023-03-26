@@ -52,6 +52,7 @@ export const storeReducer = ( state = defaultState, action) => {
 const updateCartItems = (store, position, action) => {
 
     const itemIndex = store.findIndex(({id})=>{ return id == position.id})
+    console.log(itemIndex)
     const item = store[itemIndex]
 
     if(action === 'FORCE_REMOVE_POSITION') {

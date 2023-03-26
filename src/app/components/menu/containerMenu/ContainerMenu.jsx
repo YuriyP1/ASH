@@ -16,10 +16,11 @@ const ContainerMenu = ({ section, filter }) => {
                         return <CardMenu key={item.id + Math.random()}
                             image={item.image}
                             title={item.title}
+                            price={item.price}
                             description={item.description}
                             weight={item.weight}
                             amount={item.amount}
-                            index={item.id}
+                            id={item.id}
                         />
                     }
                 })
