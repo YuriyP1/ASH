@@ -1,5 +1,6 @@
 .fullCard{
     width: 100%;
+    animation: fadeInFullCard 0.6s;
 
     &-container{
         width: 100%;
@@ -103,5 +104,16 @@
                 margin: 5px;
             }
         }
+    }
+}
+
+@keyframes fadeInFullCard {
+    from{
+        scale: 0.7;
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
     }
 }
