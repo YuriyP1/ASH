@@ -13,6 +13,7 @@ const Menu = () => {
     // const store = useSelector(state => console.log(state.store))
 
     const [cardId, setFullCard] = useState(null)
+    const [isPay, setPay] = useState(false)
 
     const showFullCard = (cardId) =>{
         setFullCard(cardId)

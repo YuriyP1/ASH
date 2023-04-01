@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Icons from '../../../assets/icons/Icons'
 import useWindowSize from '../../hook/resizeWindow'
-import asideBar from '../asideBar'
-import AsideBar from '../asideBar/App'
+import { Link } from 'react-router-dom'
+
 import './style.scss'
 
 const Header = ({ asideBar }) =>{
@@ -33,9 +33,9 @@ const Header = ({ asideBar }) =>{
                         <div className="header-content-mobNav__line"></div>
                     </div>
                 }
-                <div className="header-content-logo center">
+                <Link to='' className="header-content-logo center">
                     ASH
-                </div>
+                </Link>
                 {
                     windowSize.width > 1180 &&
                     <nav className='header-content-nav'>

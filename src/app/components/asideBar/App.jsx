@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Icons from '../../../assets/icons/Icons'
 import AsideBarCard from './asideBarCard/AsideBarCard'
+import { Link } from 'react-router-dom'
 import './style.scss'
 
 const AsideBar = ({ createBar }) =>{
@@ -40,9 +41,9 @@ const AsideBar = ({ createBar }) =>{
                 <div className="asideBar-order__sum">
                     СУМА: {store.store.sum}
                 </div>
-                <div className="asideBar-order__buy">
+                <Link to='/order' className="asideBar-order__buy">
                     ЗАМОВИТИ
-                </div>
+                </Link>
             </div>
         </div>
     )
