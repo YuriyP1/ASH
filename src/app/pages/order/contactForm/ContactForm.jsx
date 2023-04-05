@@ -17,6 +17,7 @@ export default function ContactForm () {
     const [entrance, setEntrance] = useState("");
   
     const store = useSelector(state => state)
+
     const handleSubmit = (event) => {
       event.preventDefault();
       // Здесь можно написать логику отправки данных на сервер или их сохранения в локальном состоянии приложения.
@@ -32,8 +33,26 @@ export default function ContactForm () {
         positions: store.store.store,
         fullPrice: store.store.sum
       };
-      console.log(contactData);
-      // Очистка полей после отправки формы
+
+      fetch('http://localhost:3000/api/send-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contactData)
+      })
+      .then(response => response.json())
+      .then(contactData => {
+        console.log('Успех:', contactData);
+      })
+      .catch((error) => {
+        console.error('Ошибка:', error);
+      });
+
+
+
+      
+    // Очистка полей после отправки формы
       setName("");
       setPhone("");
       setAddress("");
@@ -46,8 +65,28 @@ export default function ContactForm () {
     };
 
     const send = () =>{
-        // fetch('http://localhost:3001/api/send-order')
-        fetch('http://185.235.218.108:3001/api/order')
+        // fetch('http://localhost:3000/api/send-order')
+        // fetch('http://185.235.218.108:3001/api/order')
+
+        const data = {
+            name: 'John Doe',
+            phone: '+1 555-123-4567'
+          };
+          
+        //   fetch('http://localhost:3000/api/send-order', {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        //   })
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     console.log('Успех:', data);
+        //   })
+        //   .catch((error) => {
+        //     console.error('Ошибка:', error);
+        //   });
     }
 
     return (
