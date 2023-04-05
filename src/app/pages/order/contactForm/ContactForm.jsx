@@ -34,7 +34,7 @@ export default function ContactForm () {
         fullPrice: store.store.sum
       };
 
-      fetch('http://localhost:3000/api/send-order', {
+      fetch('http://185.235.218.108:3000/api/send-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ export default function ContactForm () {
 
 
 
-      
+
     // Очистка полей после отправки формы
       setName("");
       setPhone("");
