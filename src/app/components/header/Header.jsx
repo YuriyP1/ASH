@@ -11,6 +11,7 @@ const Header = ({ asideBar }) =>{
     const windowSize = useWindowSize()
     const header = useRef()
     const [style, setStyle] = useState(false)
+    const [isFullMenu, setFullMenu] = useState(false)
     const count = useSelector(state => state.store.count)
   
     useEffect(()=>{
@@ -26,11 +27,23 @@ const Header = ({ asideBar }) =>{
             <div className="header-content">
                 {
                     windowSize.width < 1180 &&
-                    <div className="header-content-mobNav">
+                    <div className="header-content-mobNav"
+                        onClick={()=>{ isFullMenu ? setFullMenu(false) : setFullMenu(true)}}
+                    >
                         <div className="header-content-mobNav__line"></div>
                         <div className="header-content-mobNav__line"></div>
                         {/* <div className="header-content-mobNav__line"></div> */}
                         <div className="header-content-mobNav__line"></div>
+                    </div>
+                }
+                {
+                    isFullMenu && 
+                    <div className="header-content-fullMenu">
+                        <h2>MENU</h2>
+                        <p>РОЛИ</p>
+                        <p>СУШІ</p>
+                        <p>СЕТИ</p>
+                        <h2>MENU</h2>
                     </div>
                 }
                 <Link to='' className="header-content-logo center">
@@ -40,15 +53,21 @@ const Header = ({ asideBar }) =>{
                     windowSize.width > 1180 &&
                     <nav className='header-content-nav'>
                         <ul>
-                            <li>ДОСТАВКА</li>
+                            <li><Link to={'/delivery'}>ДОСТАВКА</Link></li>
                             <li>О НАС</li>
                             <li>О НАС</li>
                         </ul>
                     </nav>
                 }
-                <div className='header-content-phone center'>
+                {
+                    windowSize.width > 1180 ? <div className='header-content-phone center'>
                     +380 (050) 687-59-30
-                </div>
+                    </div>
+                    :
+                    <div className='header-content-phone center'>
+                        <Icons icon='phone'/>
+                    </div>
+                }
                 <div className="header-content-basket center"
                     onClick={asideBar}
                 >

@@ -69,7 +69,8 @@ const HeaderMenu = ({disposeFullCard}) => {
             <div className="headerMenu-items">
                 <Swiper
                     spaceBetween={30}
-                    centeredSlides={ window.width > 1180 ? 'center' : 'default'}
+                    centeredSlides={ window.width < 1180 && 'center'}
+                    // centeredSlides={ 'default'}
                     slidesPerView={ window.width > 1180 ? 4 : 2}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}

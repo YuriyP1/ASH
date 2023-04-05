@@ -5,6 +5,8 @@ import Background from "./components/background/Background";
 import Header from "./components/header/Header";
 import MenuPage from "./pages/menu/MenuPage";
 import OrderPage from "./pages/order/OrderPage";
+import Footer from "./components/footer/Footer";
+import Delivery from "./pages/delivery/Delivery";
 
 export default function App () {
 
@@ -21,7 +23,9 @@ export default function App () {
             <Routes>
                 <Route path='' element={ <MenuPage />}></Route>
                 <Route path='order' element={ <OrderPage />}></Route>
+                <Route path='/delivery' element={ <Delivery />}></Route>
             </Routes>
+            <Footer />
             <Background />
         </div>
     )

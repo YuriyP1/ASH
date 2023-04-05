@@ -14,9 +14,9 @@ const AsideBar = ({ createBar }) =>{
             <div className="asideBar-head">
                 <h1 className="center">КОШИК</h1>
                 <div className="asideBar-head__basket center"
-                    onClick={createBar}
+                onClick={createBar}
                 >
-                    <Icons icon='basket' style={{position:'absolute'}}/>
+                    <Icons icon='basket' style={{position:'absolute'}} onClick={createBar}/>
                     <div className="asideBar-head__basket__count">
                         {store.store.count}
                     </div>
