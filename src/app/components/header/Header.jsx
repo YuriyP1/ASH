@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Icons from '../../../assets/icons/Icons'
 import useWindowSize from '../../hook/resizeWindow'
 import { Link } from 'react-router-dom'
@@ -19,6 +19,24 @@ const Header = ({ asideBar }) =>{
             window.scrollY <= 30 ? setStyle(false) :  setStyle(true)
           });
     },[])
+
+
+    const dispatch = useDispatch()
+
+    const setSection = (section) => {
+        // disposeFullCar(null)
+        switch (section){
+            case 'ПІЦА': dispatch({ type: 'SET_SECTION', section: 'pizza' })
+                break
+            case 'РОЛИ': dispatch({ type: 'SET_SECTION', section: 'roll' })
+                break
+            case 'СУШІ': dispatch({ type: 'SET_SECTION', section: 'sushi' })
+                break
+            case 'БУРГЕРИ': dispatch({ type: 'SET_SECTION', section: 'burgers' })
+                break
+        }
+        // setActive(section)
+    }
 
     return(
         <div className={`header limitWidthHeader fix ${style ? 'bg' : null}`}
@@ -40,8 +58,8 @@ const Header = ({ asideBar }) =>{
                     isFullMenu && 
                     <div className="header-content-fullMenu">
                         <h2>MENU</h2>
-                        <p>РОЛИ</p>
-                        <p>СУШІ</p>
+                        <p onClick={()=>{setSection("РОЛИ")}}>РОЛИ</p>
+                        <p onClick={()=>{setSection("СУШІ")}}>СУШІ</p>
                         <p>СЕТИ</p>
                         <h2>MENU</h2>
                     </div>

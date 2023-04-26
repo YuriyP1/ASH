@@ -22,7 +22,7 @@ console.log(store.store.sum)
                                 {_index+1}.&nbsp;
                             </div>
                             <div className="checkForm-position__title">
-                                {item.title} рол великий смачний &nbsp;
+                                {item.title} &nbsp;
                             </div>
                             <div className="checkForm-position__amount">
                                 {item.amount}x{item.price} грн

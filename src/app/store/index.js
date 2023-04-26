@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { sectionReducer } from './sectionReducer'
 import { storeReducer } from './storeReducer'
+import { listReducer } from './listReduser'
 
 const rootReducer = combineReducers({
     section: sectionReducer,
-    store: storeReducer
+    store: storeReducer,
+    list: listReducer
 })
 
 const store = configureStore({ reducer: rootReducer })

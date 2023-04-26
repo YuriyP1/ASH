@@ -12,6 +12,11 @@
     height: 86px;
     color: white;
 
+    a{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+
     &.bg{
         backdrop-filter: blur(10px);
         // transition: 1s;
@@ -37,6 +42,9 @@
             top: 0;
             left: 0;
             background-color: rgb(146, 146, 146);
+            background-image: url('../../../../public/bg/bg-mobile-menu.jpeg');
+            background-repeat: repeat-y;
+            background-size: cover;
             padding-top: 30px;
             display: flex;
             flex-direction: column;
@@ -49,6 +57,7 @@
                 padding: 10px;
                 border-radius: 5px;
                 width: 50%;
+                text-align: center;
             }
         }
 

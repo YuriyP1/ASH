@@ -15,14 +15,14 @@ export default function ContactForm () {
     const [deliveryType, setDeliveryType] = useState("Доставка");
     const [house, setHouse] = useState("");
     const [entrance, setEntrance] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+
   
     const store = useSelector(state => state)
 
     const handleSubmit = (event) => {
+
       event.preventDefault();
-      // Здесь можно написать логику отправки данных на сервер или их сохранения в локальном состоянии приложения.
-      // Например, можно создать объект с данными и передать его в функцию-обработчик или контекст приложения.
-      console.log(store.store)
       const contactData = {
         name,
         phone,
@@ -34,7 +34,31 @@ export default function ContactForm () {
         fullPrice: store.store.sum
       };
 
+      if (name === '' || phone === '') {
+        setErrorMessage('Please fill out both name and phone fields.');
+      } else {
+        setErrorMessage(false)
+      
+      // Здесь можно написать логику отправки данных на сервер или их сохранения в локальном состоянии приложения.
+      // Например, можно создать объект с данными и передать его в функцию-обработчик или контекст приложения.
+      console.log(store.store)
+
       fetch('http://185.235.218.108:3000/api/send-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contactData)
+      })
+      .then(response => response.json())
+      .then(contactData => {
+        console.log('Успех:', contactData);
+      })
+      .catch((error) => {
+        console.error('Ошибка:', error);
+      });
+      
+      fetch('http://localhost:3000/api/db/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -57,6 +81,8 @@ export default function ContactForm () {
       setPhone("");
       setAddress("");
     //   setDeliveryType("");
+
+      }
     };
 
 
@@ -72,21 +98,7 @@ export default function ContactForm () {
             name: 'John Doe',
             phone: '+1 555-123-4567'
           };
-          
-        //   fetch('http://localhost:3000/api/send-order', {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        //   })
-        //   .then(response => response.json())
-        //   .then(data => {
-        //     console.log('Успех:', data);
-        //   })
-        //   .catch((error) => {
-        //     console.error('Ошибка:', error);
-        //   });
+
     }
 
     return (
@@ -160,6 +172,8 @@ export default function ContactForm () {
             }
 
             <button type="submit" onClick={send}>Отправить</button>
+            {errorMessage && <div className='error'>{errorMessage}</div>}
         </form>
+        
     )
 }

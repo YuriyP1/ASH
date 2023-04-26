@@ -16,20 +16,37 @@
     label{
         font-size: 18px;
         width: 70%;
+        margin-bottom: 10px;
     }
     &-input{
-        height: 35px;
+        height: 45px;
         width: 70%;
         border: 1px rgba(0, 0, 0, 0.3) solid;
         margin-bottom: 20px;
         // font-weight: 500;
         font-size: 16px;
+        padding-left: 20px;
+        box-sizing: border-box;
         border-radius: 10px;
         background-color: #ffffff7c;
         background-color: #ffffff;
 
         // padding: 0 5% 0 5%;
         // padding-left: 20px;
+
+    }
+
+    .error{
+        animation: fadeInError 0.4s forwards;
+        transition: 0.2;
+        // padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        background-color: rgba(255, 0, 0, 0.5);
+        color: wheat;
+        border-radius: 20px;
     }
 
     &-adress_detail{
@@ -93,5 +110,16 @@
         }
         // display: flex;
         // justify-content: center;
+    }
+}
+
+@keyframes fadeInError {
+    from{
+        height: 0px;
+        padding: 0;
+    }
+    to{
+        height: auto;
+        padding: 20px;
     }
 }

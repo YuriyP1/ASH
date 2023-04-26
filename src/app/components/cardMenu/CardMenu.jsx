@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux'
 import './style.scss'
 
-const CardMenu = ({ image, title, price, description, weight, amount, id, setFullCard }) =>{
+const CardMenu = ({ image, title, price, description, weight, number, amount, id, setFullCard }) =>{
 
     const position = {
         title,
         amount,
+        number,
         weight,
         price,
         image,
@@ -20,8 +21,10 @@ const CardMenu = ({ image, title, price, description, weight, amount, id, setFul
 
     return(
         <div className="cardMenu" key={id}>
-            <div className="cardMenu-imageWrap">
-                <img src={image} alt="" />
+            <div className="cardMenu-imageWrap"
+                onClick={()=>{setFullCard(id)}}
+            >
+                <img src={image} alt="image" />
             </div>
             <div className="cardMenu-content">
                 <div className="cardMenu-titleAndDescription">

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import menu from '../../../../assets/menu/menu.json'
 
 import './style.scss'
+import { useDispatch } from 'react-redux'
 
 const FullCard = ({cardId}) => {
 
@@ -36,7 +37,11 @@ const FullCard = ({cardId}) => {
             title: 'ікра тобіко'
         }
     ]
-    // console.log(menu.menu)
+    const dispatch = useDispatch()
+
+    const addPosition = (position) => {
+        dispatch({ type: 'ADD_POSITION', position: position })
+    }
 
     console.log(card)
     return (
@@ -53,7 +58,9 @@ const FullCard = ({cardId}) => {
                         <p>{card.description}</p>
                     </div>
                     <div className='fullCard-content-btnAndPrice'>
-                        <div className="fullCard-content__btn">
+                        <div className="fullCard-content__btn"
+                            onClick={()=>{addPosition(card)}}
+                        >
                             У КОШИК
                         </div>
                         <p>{card.price} <span>&nbsp;грн</span></p>

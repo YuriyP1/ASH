@@ -7,13 +7,33 @@ import HeaderMenu from "./headerMenu/HeaderMenu"
 
 import './style.scss'
 
+const filterPartners = (searchText, filter, technology, listOfPartners) => {
+  
+    const filteredPartners = listOfPartners.filter(obj => obj.technology === technology);
+    console.log(filteredPartners)
+  
+    if(filter === 'All' && !searchText){
+      return filteredPartners
+    }
+  
+    if (!searchText) {
+      return filteredPartners.filter(({ chapter }) =>
+      chapter.toLowerCase().includes(filter.toLowerCase())
+      )
+    }
+  
+    return filteredPartners.filter(({ title }) =>
+      title.toLowerCase().includes(searchText.toLowerCase())
+    )
+  }
+
 const Menu = () => {
 
     const storeSection = useSelector(state => state.section.section)
-    // const store = useSelector(state => console.log(state.store))
 
     const [cardId, setFullCard] = useState(null)
-    const [isPay, setPay] = useState(false)
+    const [menuListFiltered, setMenuListFiltered] = useState('');
+
 
     const showFullCard = (cardId) =>{
         setFullCard(cardId)
@@ -21,12 +41,12 @@ const Menu = () => {
     
 
     return (
-        <div className="menu limitWidthSecond">
+        <div className="menu limitWidthSecond ">
             <HeaderMenu disposeFullCard={showFullCard}/>
             {
                 cardId
                 ? <FullCard cardId={cardId}/>
-                : <ContainerMenu section={storeSection} setFullCard={showFullCard}/>
+                : <ContainerMenu section={storeSection} filteredMenu={menuListFiltered}  setFullCard={showFullCard}/>
             }
         </div>
     )

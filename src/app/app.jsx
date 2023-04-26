@@ -26,7 +26,7 @@ export default function App () {
                 <Route path='/delivery' element={ <Delivery />}></Route>
             </Routes>
             <Footer />
-            <Background />
+            {/* <Background /> */}
         </div>
     )
 }

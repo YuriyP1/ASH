@@ -25,6 +25,13 @@ body{
         position: relative;
         overflow: hidden;
         padding-top: 150px;
+        background-image: url('../../public/bg/bg-main.jpg');
+        background-repeat: repeat-y;
+        background-size: cover;
+        // background-size: auto;
+        background-position: 0 0, 0 5px;
+        // filter: blur(10px);
+        transition: background-image 0.5s ease-in-out;
 
         @media (max-width: 1180px) {
           width: 100vw;
@@ -46,6 +53,10 @@ body{
 }
 .FB9950{
     color: #FB9950;
+}
+.noise {
+  background-color: #7c7c7c; /* Колір фону */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none"/><path d="M-10,50 q30,-30 60,0 t60,0 q30,0 30,30 t-30,30 q-10,0 -10,-10 t-10,-10 t-10,-10 t-10,-10 q-20,20 -40,0 t-40,0 q-20,0 -20,-20 t-20,-20 t-20,-20 t-20,-20 q0,20 -10,20 t-10,20 t-10,20 t-10,20" fill="%23ffffff" opacity="0.2"/></svg>'); /* шаблон шуму */
 }
 .limitWidthSecond {
     max-width: 1325px;
@@ -83,4 +94,22 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .gradient {
+    background: linear-gradient(to right, #304242, #5eac8c, #467471); /* Градієнт, який потрібно переливати */
+    background-size: 600% 100%; /* Розмір градієнту */
+    animation: gradient 30s ease infinite; /* Анімація */
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%; /* Початкова позиція градієнту */
+    }
+    50% {
+      background-position: 100% 50%; /* Кінцева позиція градієнту */
+    }
+    100% {
+      background-position: 0% 50%; /* Початкова позиція градієнту */
+    }
   }

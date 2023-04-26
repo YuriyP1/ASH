@@ -1,4 +1,5 @@
 .asideBar{
+    animation: fadeIn-asideBar 1s;
     position: fixed;
     z-index: 200;
     top: 0;
@@ -54,5 +55,35 @@
             text-align: center;
         }
     }
+}
 
+.asideBar-bg{
+    position: fixed;
+    z-index: 199;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    // left: 0;
+    right: 35%;
+    background-color: black;
+    opacity: 0.3;
+}
+
+@keyframes fadeIn-asideBar {
+    from{
+        translate: 100% 0;
+    }
+
+    to{
+        translate: 0 0;
+    }
+}
+@keyframes fadeOut-asideBar {
+    from{
+        translate: 0 0;
+    }
+
+    to{
+        translate: 100% 0;
+    }
 }
