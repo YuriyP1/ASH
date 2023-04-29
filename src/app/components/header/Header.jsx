@@ -25,12 +25,17 @@ const Header = ({ asideBar }) =>{
 
     const setSection = (section) => {
         // disposeFullCar(null)
+        if(isFullMenu){
+            setFullMenu(false)
+        }
         switch (section){
             case 'ПІЦА': dispatch({ type: 'SET_SECTION', section: 'pizza' })
                 break
             case 'РОЛИ': dispatch({ type: 'SET_SECTION', section: 'roll' })
                 break
             case 'СУШІ': dispatch({ type: 'SET_SECTION', section: 'sushi' })
+                break
+            case 'СЕТИ': dispatch({ type: 'SET_SECTION', section: 'set' })
                 break
             case 'БУРГЕРИ': dispatch({ type: 'SET_SECTION', section: 'burgers' })
                 break
@@ -60,7 +65,7 @@ const Header = ({ asideBar }) =>{
                         <h2>MENU</h2>
                         <p onClick={()=>{setSection("РОЛИ")}}>РОЛИ</p>
                         <p onClick={()=>{setSection("СУШІ")}}>СУШІ</p>
-                        <p>СЕТИ</p>
+                        <p onClick={()=>{setSection("СЕТИ")}}>СЕТИ</p>
                         <h2>MENU</h2>
                     </div>
                 }

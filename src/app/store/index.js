@@ -3,45 +3,20 @@ import { sectionReducer } from './sectionReducer'
 import { storeReducer } from './storeReducer'
 import { listReducer } from './listReduser'
 
+const savedState = JSON.parse(localStorage.getItem('store'));
+
 const rootReducer = combineReducers({
     section: sectionReducer,
     store: storeReducer,
     list: listReducer
 })
 
-const store = configureStore({ reducer: rootReducer })
+const store = configureStore({ reducer: rootReducer, preloadedState: savedState ? savedState : null })
+
+store.subscribe(()=>{
+    console.log('changing local storage')
+    const state = store.getState();
+    localStorage.setItem('store', JSON.stringify(state));
+})
 
 export default store
-
-// import { persistStore, persistReducer, 
-//     FLUSH,
-//     REHYDRATE,
-//     PAUSE,
-//     PERSIST,
-//     PURGE,
-//     REGISTER,} from 'redux-persist'
-// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-
-
-// const rootReducer = combineReducers({ store: storeReducer })
-
-// const persistConfig = {
-//     key: 'root',
-//     version: 1,
-//     storage
-// }
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-// const store = configureStore({
-//     reducer: persistedReducer,
-//     middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
-//  })
-
-// export let persistor = persistStore(store)
-// export default store

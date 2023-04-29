@@ -48,19 +48,24 @@ const HeaderMenu = ({disposeFullCard}) => {
 
     const items = [
         {
-            title: "ПІЦА"
+            title: "СУШІ",
+            section: 'sushi'
         },
         {
-            title: "СУШІ"
+            title: "РОЛИ",
+            section: 'roll'
         },
         {
-            title: "РОЛИ"
+            title: "СЕТИ",
+            section: "set"
         },
         {
-            title: "БУРГЕРИ"
+            title: "НАПОЇ",
+            section: "drink"
         },
     ]
     const store = useSelector(state => state)
+    console.log(store.section)
 
     const [active, setActive] = useState(items[0].title)
 
@@ -68,19 +73,26 @@ const HeaderMenu = ({disposeFullCard}) => {
     //     // setActive(store.section.section)
     // },[storeList.section])
 
+    useEffect(()=>{
+        if(store.section.section){
+            setActive(store.section.section)
+            console.log('changed')
+        }
+    },[store.section.section])
+
     const setSection = (section) => {
         disposeFullCard(null)
         switch (section){
-            case 'ПІЦА': dispatch({ type: 'SET_SECTION', section: 'pizza' })
+            case 'СЕТИ': dispatch({ type: 'SET_SECTION', section: 'set' })
                 break
             case 'РОЛИ': dispatch({ type: 'SET_SECTION', section: 'roll' })
                 break
             case 'СУШІ': dispatch({ type: 'SET_SECTION', section: 'sushi' })
                 break
-            case 'БУРГЕРИ': dispatch({ type: 'SET_SECTION', section: 'burgers' })
+            case 'НАПОЇ': dispatch({ type: 'SET_SECTION', section: 'drink' })
                 break
         }
-        setActive(section)
+        // setActive(section)
         console.log(section)
     }
 
@@ -115,7 +127,7 @@ const HeaderMenu = ({disposeFullCard}) => {
                 {
                     items.map((item, _index)=>{
                         return <SwiperSlide key={_index} className="center">
-                            <div className={`headerMenu-items__position center ${active === item.title && 'active'}`}
+                            <div className={`headerMenu-items__position center ${active === item.section && 'active'}`}
                                 onClick={()=>{setSection(item.title)}}
                             >
                                 {item.title}
@@ -133,7 +145,7 @@ const HeaderMenu = ({disposeFullCard}) => {
             {
                 items.map((item, _index)=>{
                     return <>
-                        <div className={`headerMenuMob-itemsMob__position center ${active === item.title && 'active'}`}
+                        <div className={`headerMenuMob-itemsMob__position center ${active === item.section && 'active'}`}
                             onClick={()=>{setSection(item.title)}}
                         >
                             {item.title}
@@ -144,7 +156,11 @@ const HeaderMenu = ({disposeFullCard}) => {
             </div> 
             <div className='mobile-title'>
                 <div className='mobile-title__line'></div>
-                    <p>{active}</p>
+                    <p>{
+                        items.map((obj, i)=>{
+                        if(obj.section === store.section.section) return <span>{obj.title}</span>
+                    })
+                    }</p>
                 <div className='mobile-title__line'></div>
             </div>
         </div>

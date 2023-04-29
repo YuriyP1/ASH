@@ -34,6 +34,7 @@ body{
         transition: background-image 0.5s ease-in-out;
 
         @media (max-width: 1180px) {
+          background-attachment: fixed; /* добавляем это свойство */
           width: 100vw;
           border-radius: 0px;
           padding: 150px 0 0 0;
