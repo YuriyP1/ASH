@@ -31,23 +31,13 @@ const Menu = () => {
 
     const storeSection = useSelector(state => state.section.section)
 
-    const [cardId, setFullCard] = useState(null)
     const [menuListFiltered, setMenuListFiltered] = useState('');
 
 
-    const showFullCard = (cardId) =>{
-        setFullCard(cardId)
-    }
-    
-
     return (
         <div className="menu limitWidthSecond ">
-            <HeaderMenu disposeFullCard={showFullCard}/>
-            {
-                cardId
-                ? <FullCard cardId={cardId}/>
-                : <ContainerMenu section={storeSection} filteredMenu={menuListFiltered}  setFullCard={showFullCard}/>
-            }
+            <HeaderMenu />
+             <ContainerMenu section={storeSection} filteredMenu={menuListFiltered}/>
         </div>
     )
 }

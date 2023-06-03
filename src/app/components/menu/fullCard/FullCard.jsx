@@ -11,48 +11,42 @@ const FullCard = ({cardId}) => {
     menu.menu.map((position, _index)=>{
         if(position.id === cardId){
             card = position
+            console.log(card.image)
         }
     })
 
-    const ingredients = [
-        {
-            title: 'лосось'
-        },
-        {
-            title: 'норі'
-        },
-        {
-            title: 'рис'
-        },
-        {
-            title: 'норі'
-        },
-        {
-            title: 'рис'
-        },
-        {
-            title: 'рис'
-        },
-        {
-            title: 'ікра тобіко'
-        }
-    ]
     const dispatch = useDispatch()
 
     const addPosition = (position) => {
         dispatch({ type: 'ADD_POSITION', position: position })
     }
 
-    console.log(card)
     return (
         <div className="fullCard limitWidthSecond">
             <div className="fullCard-container">
                 <div className='fullCard-imageWrap'>
-                    <img src={card.image} alt="" />
+                    <img src={`http://localhost:3001/${card.image}`} alt="icon" />
                 </div>
                 <div className='fullCard-content'>
                     <div className="fullCard-content__title">
                         <h1>{card.title}</h1>
+                    </div>
+                    <div className="fullCard-content__underTitle">
+                        <span>{card.number && <>{card.number}</>} шт </span>
+                        {/* <br /> */}
+                        <span>{card.weight && <>{card.weight}</>} гр </span>
+                    </div>
+                    <div className="fullCard-ingredients">
+                        {/* <p className='center'>ІНГРЕДІЄНТИ</p> */}
+                        {
+                            card.contain?.map((item, _index)=>(
+                                <div className="ingredient">
+                                    <p>
+                                        {item}
+                                    </p>
+                                </div>
+                            ))
+                        }
                     </div>
                     <div className="fullCard-content__description">
                         <p>{card.description}</p>
@@ -66,18 +60,6 @@ const FullCard = ({cardId}) => {
                         <p>{card.price} <span>&nbsp;грн</span></p>
                     </div>
                 </div>
-            </div>
-            <div className="fullCard-ingredients">
-                {/* <p className='center'>ІНГРЕДІЄНТИ</p> */}
-                {
-                    ingredients.map((item, _index)=>(
-                        <div className="ingredient">
-                            <p>
-                                {item.title}
-                            </p>
-                        </div>
-                    ))
-                }
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import useWindowSize from '../../hook/resizeWindow'
 import { Link } from 'react-router-dom'
 
 import './style.scss'
+import phoneTooltip from '../phoneTooltip'
 
 const Header = ({ asideBar }) =>{
 
@@ -12,6 +13,7 @@ const Header = ({ asideBar }) =>{
     const header = useRef()
     const [style, setStyle] = useState(false)
     const [isFullMenu, setFullMenu] = useState(false)
+    const [isPhoneToolTip, setPhoneToolTip] = useState()
     const count = useSelector(state => state.store.count)
   
     useEffect(()=>{
@@ -41,6 +43,10 @@ const Header = ({ asideBar }) =>{
                 break
         }
         // setActive(section)
+    }
+
+    const openPhoneTooltip = () => {
+        phoneTooltip()
     }
 
     return(
@@ -87,7 +93,9 @@ const Header = ({ asideBar }) =>{
                     +380 (050) 687-59-30
                     </div>
                     :
-                    <div className='header-content-phone center'>
+                    <div className='header-content-phone center'
+                        onClick={openPhoneTooltip}
+                    >
                         <Icons icon='phone'/>
                     </div>
                 }

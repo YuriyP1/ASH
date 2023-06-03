@@ -65,9 +65,9 @@ const AsideBarCard = ({ image, title, price, description, weight, amount, id }) 
                         {amount} <span>шт</span>
                     </div>
                 </div> */}
-                <div className="asideBarCard-remove center" onClick={()=>{}}>
+                {/* <div className="asideBarCard-remove center" onClick={()=>{}}>
                     r
-                </div>
+                </div> */}
             </div>
         </div>
     )

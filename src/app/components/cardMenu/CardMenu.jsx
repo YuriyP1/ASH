@@ -1,17 +1,28 @@
 import { useDispatch } from 'react-redux'
+import { Link, useRoutes } from 'react-router-dom'
+import ProductCard from '../../pages/productCard/ProductCard';
 import './style.scss'
 
-const CardMenu = ({ image, title, price, description, weight, number, amount, id, setFullCard }) =>{
+const routes = [
+    {
+      path: '/product/:id',
+      element: <ProductCard />,
+    },
+  ];
+
+const CardMenu = ({ image, title, price, contain, description, weight, number, amount, id}) =>{
 
     const position = {
         title,
         amount,
         number,
         weight,
+        contain,
         price,
         image,
         id
     }
+    console.log(id, 'id')
 
     const dispatch = useDispatch()
 
@@ -19,22 +30,26 @@ const CardMenu = ({ image, title, price, description, weight, number, amount, id
         dispatch({ type: 'ADD_POSITION', position: position })
     }
 
+    const routing = useRoutes(routes);
+
     return(
-        <div className="cardMenu" key={id}>
+        <Link to={`/product/${id}`} className="cardMenu" key={title}>
             <div className="cardMenu-imageWrap"
-                onClick={()=>{setFullCard(id)}}
+                
+                // onClick={()=>{setFullCard(id)}}
             >
                 <img src={image} alt="image" />
             </div>
             <div className="cardMenu-content">
                 <div className="cardMenu-titleAndDescription">
                     <div className="cardMenu-titleAndDescription-title"
-                        onClick={()=>{setFullCard(id)}}
                     >
                         {title}
                     </div> 
                     <div className="cardMenu-titleAndDescription-description">
-                        {description}
+                        {contain?.map((item, _i)=>(
+                            <span>{item},&nbsp;</span>
+                        ))}
                     </div> 
                 </div>
                 <div className="cardMenu-props-container">
@@ -42,7 +57,7 @@ const CardMenu = ({ image, title, price, description, weight, number, amount, id
                         {weight} <span>грм</span>
                     </div>
                     <div className="cardMenu-props-container__amount">
-                        {amount} <span>шт</span>
+                        {number} <span>шт</span>
                     </div>
                 </div>
                 <div className='cardMenu-btnAndPrice'>
@@ -54,7 +69,8 @@ const CardMenu = ({ image, title, price, description, weight, number, amount, id
                     </div>
                 </div>
             </div>
-        </div>
+            {routing}
+        </Link>
     )
 }
 

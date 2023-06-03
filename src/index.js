@@ -6,7 +6,7 @@ import store from './app/store'
 import './style/style.scss'
 
 const root = createRoot(document.querySelector('#root'))
- 
+
 root.render(
     <Provider store={store}>
         <BrowserRouter>

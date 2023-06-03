@@ -10,6 +10,7 @@ import './style.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import useWindowSize from '../../../hook/resizeWindow';
 import FilterClass from '../Filter';
+import { Link } from 'react-router-dom';
 
 // filter by searching
 const filterMenu = (searchText, listOfPositions) => {
@@ -34,7 +35,7 @@ const HeaderMenu = ({disposeFullCard}) => {
         if(searchTerm != ''){
             dispatch({ type: 'SET_SEARCH', searchTerm: searchTerm })
         } else {
-            dispatch({ type: 'SET_SECTION', section: section })
+            dispatch({ type: 'SET_SECTION', section: store.section.section })
         }
     }
 
@@ -60,12 +61,11 @@ const HeaderMenu = ({disposeFullCard}) => {
             section: "set"
         },
         {
-            title: "НАПОЇ",
-            section: "drink"
+            title: "ГУНКАНИ",
+            section: "guncan"
         },
     ]
     const store = useSelector(state => state)
-    console.log(store.section)
 
     const [active, setActive] = useState(items[0].title)
 
@@ -74,14 +74,20 @@ const HeaderMenu = ({disposeFullCard}) => {
     // },[storeList.section])
 
     useEffect(()=>{
+        dispatch({ type: 'SET_SECTION', section: store.section.section })
         if(store.section.section){
             setActive(store.section.section)
             console.log('changed')
+        } else {
+            dispatch({ type: 'SET_SECTION', section: store.section.section })
         }
     },[store.section.section])
 
+    useEffect(()=>{
+        setSection('РОЛИ')
+    },[])
+
     const setSection = (section) => {
-        disposeFullCard(null)
         switch (section){
             case 'СЕТИ': dispatch({ type: 'SET_SECTION', section: 'set' })
                 break
@@ -89,11 +95,9 @@ const HeaderMenu = ({disposeFullCard}) => {
                 break
             case 'СУШІ': dispatch({ type: 'SET_SECTION', section: 'sushi' })
                 break
-            case 'НАПОЇ': dispatch({ type: 'SET_SECTION', section: 'drink' })
+            case 'ГУНКАНИ': dispatch({ type: 'SET_SECTION', section: 'guncan' })
                 break
         }
-        // setActive(section)
-        console.log(section)
     }
 
     return (<>
@@ -127,11 +131,11 @@ const HeaderMenu = ({disposeFullCard}) => {
                 {
                     items.map((item, _index)=>{
                         return <SwiperSlide key={_index} className="center">
-                            <div className={`headerMenu-items__position center ${active === item.section && 'active'}`}
+                            <Link to="/" className={`headerMenu-items__position center ${active === item.section && 'active'}`}
                                 onClick={()=>{setSection(item.title)}}
                             >
                                 {item.title}
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     })
                 }
@@ -145,11 +149,11 @@ const HeaderMenu = ({disposeFullCard}) => {
             {
                 items.map((item, _index)=>{
                     return <>
-                        <div className={`headerMenuMob-itemsMob__position center ${active === item.section && 'active'}`}
+                        <Link to="/" className={`headerMenuMob-itemsMob__position center ${active === item.section && 'active'}`}
                             onClick={()=>{setSection(item.title)}}
                         >
                             {item.title}
-                        </div>
+                        </Link>
                     </>
                 })
             }

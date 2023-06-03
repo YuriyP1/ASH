@@ -44,16 +44,21 @@ const Banner = () =>{
                     <SwiperSlide>
                         <div className='banner-container'>
                             <div className="banner-content">
-                            <div style={{display: 'flex'}}>СУШІ В <div className='FB9950'> ASH</div></div>
+                                <div>
+                                                                <span>СУШІ В <span className='FB9950'> ASH </span></span>
                                 ДОСТАВЩИК <br/>
-                                ВАШ
+                                <span></span>ВАШ
+                                </div>
+                                <div className="banner-visual" id='canvas__root'>
+                                <img className="banner-visual__image" src='images/banner/banner-image.png'/>
+                            </div>
                                 <div className='banner-content__btn'>
                                     ЗІБРАТИ КОШИК
                                 </div>
                             </div>
-                            <div className="banner-visual" id='canvas__root'>
+                            {/* <div className="banner-visual" id='canvas__root'>
                                 <img className="banner-visual__image" src='images/banner/banner-image.png'/>
-                            </div>
+                            </div> */}
                         </div>
                     </SwiperSlide>
                     <SwiperSlide >

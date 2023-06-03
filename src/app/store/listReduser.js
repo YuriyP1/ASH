@@ -5,7 +5,7 @@ const SET_SEARCH ='SET_SEARCH'
 
 const defaultState = {
     menu: [],
-    section: 'burgers',
+    section: '',
     search: '',
 }
 

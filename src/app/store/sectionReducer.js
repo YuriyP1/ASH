@@ -1,7 +1,7 @@
 const SET_SECTION ='SET_SECTION'
 
 const defaultState = {
-    section: 'burgers',
+    section: 'roll',
 }
 
 export const sectionReducer = ( state = defaultState, action) => {

@@ -44,12 +44,13 @@ export default function ContactForm () {
       console.log(store.store)
 
       fetch('http://185.235.218.108:3000/api/send-order', {
-        method: 'POST',
+      // fetch('http://192.168.33.64:3001/api/send-order', {
+      method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(contactData)
-      })
+      }) 
       .then(response => response.json())
       .then(contactData => {
         console.log('Успех:', contactData);
@@ -58,20 +59,20 @@ export default function ContactForm () {
         console.error('Ошибка:', error);
       });
       
-      fetch('http://localhost:3000/api/db/user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(contactData)
-      })
-      .then(response => response.json())
-      .then(contactData => {
-        console.log('Успех:', contactData);
-      })
-      .catch((error) => {
-        console.error('Ошибка:', error);
-      });
+      // fetch('http://localhost:3000/api/db/user', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(contactData)
+      // })
+      // .then(response => response.json())
+      // .then(contactData => {
+      //   console.log('Успех:', contactData);
+      // })
+      // .catch((error) => {
+      //   console.error('Ошибка:', error);
+      // });
 
 
 

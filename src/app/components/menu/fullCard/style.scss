@@ -44,6 +44,12 @@
             }
         }
 
+        &__underTitle{
+            border-left: 5px solid #C23231;
+            padding-left: 30px;
+            font-size: 2vh;
+        }
+
         &__description{
             font-size: 23px;
             margin-bottom: 40px;
@@ -91,17 +97,15 @@
         margin-top: 20px;
 
         .ingredient{
-            // height: 50%;
-            // width: 30px;
-            // width: 100%;
             padding: 10px 20px 10px 20px;
-            margin-right: 10px;
+            margin: 5px 5px;
             border: 1px rgba(0, 0, 0, 0.3) solid;
             font-weight: 500;
             font-size: 16px;
             border-radius: 10px;
             @media (max-width: 1180px) {
-                margin: 5px;
+                margin: 3px;
+                font-size: 13px;
             }
         }
     }
